@@ -19,5 +19,6 @@ public class JavaBasicDataStructure_04 {
 
         // final 자바의 final은 자료형에 값을 단 한번만 설정할수 있게 강제하는 키워드이다. 값을 재설정할수없다
         final  int n3= 123;
+        System.out.println("연습문제 풀이");
     }
 }
