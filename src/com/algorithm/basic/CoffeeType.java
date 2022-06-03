@@ -1,4 +1,4 @@
-package com.algorithm;
+package com.algorithm.basic;
 
 public enum CoffeeType {
     AMERICANO,

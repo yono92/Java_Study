@@ -1,4 +1,4 @@
-package com.algorithm;
+package com.algorithm.basic;
 
 public class JavaBasicDataStructure_04 {
     public static void main(String[] args) {

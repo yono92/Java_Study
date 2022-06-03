@@ -1,4 +1,4 @@
-package com.algorithm;
+package com.algorithm.basic;
 
 public class JavaEnumExample {
     public static void main(String[] args) {

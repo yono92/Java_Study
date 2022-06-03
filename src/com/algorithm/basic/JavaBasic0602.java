@@ -1,4 +1,4 @@
-package com.algorithm;
+package com.algorithm.basic;
 
 import java.util.ArrayList;
 import java.util.Comparator;
