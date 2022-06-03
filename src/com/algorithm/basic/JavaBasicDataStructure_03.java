@@ -13,7 +13,7 @@ public class JavaBasicDataStructure_03 {
             - 중복을 허용하지 않는다.
             - 순서가 없다.
          */
-
+        
         // 교집합
         HashSet<Integer> s1 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         HashSet<Integer> s2 = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8, 9));

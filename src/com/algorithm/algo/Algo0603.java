@@ -1,5 +1,7 @@
 package com.algorithm.algo;
 
+import java.util.*;
+
 public class Algo0603 {
     public static void main(String[] args) {
         /*
@@ -9,7 +11,9 @@ public class Algo0603 {
          */
         int[] prices = {7, 1, 5, 3, 6, 4};
         System.out.println(maxProfit(prices));
-
+        int[] nums = {1, 2, 3, 4};
+        System.out.println(containsDuplicate(nums));
+        System.out.println(productExceptSelf(nums));
     }
 
     public static int maxProfit(int[] prices) {
@@ -28,4 +32,37 @@ public class Algo0603 {
         }
         return benefit;
     }
+
+
+    public static boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i<nums.length;i++) {
+            if (!set.add(nums[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    /*
+    정수 배열이 주어지면 예외 의 모든 요소의 곱과 같은 배열nums 을 반환 합니다 . answer answer[i] nums nums[i]
+    접두사 또는 접미사의 곱은 32비트 정수 에 맞도록 nums보장 됩니다 .
+    O(n) 나눗셈 연산을 사용하지 않고 시간 에 따라 실행되는 알고리즘을 작성해야 합니다  .
+     */
+
+    public static int[] productExceptSelf(int[] nums) {
+        int[] result = new int[nums.length];
+        for (int i=0 ,tmp =1 ;i<nums.length;i++) {
+            result[i] = tmp;
+            tmp *= nums[i];
+        }
+        for (int i = nums.length - 1, tmp = 1; i >= -0; i--) {
+            result[i] *= tmp;
+            tmp *= nums[i];
+        }
+        return result;
+    }
+
 }
