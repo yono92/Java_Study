@@ -14,6 +14,8 @@ public class Algo0603 {
         int[] nums = {1, 2, 3, 4};
         System.out.println(containsDuplicate(nums));
         System.out.println(productExceptSelf(nums));
+        int[] nums2 = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println(maxSubArray(nums));
     }
 
     public static int maxProfit(int[] prices) {
@@ -65,4 +67,21 @@ public class Algo0603 {
         return result;
     }
 
+
+    /*
+    정수 배열이 주어지면 nums가장 큰 합을 갖는 연속적인 하위 배열(최소한 하나의 숫자 포함)을 찾아 합을 반환 합니다 .
+    하위 배열 은 배열의 연속 적인 부분입니다.
+    */
+    public static int maxSubArray(int[] nums) {
+        int n = nums.length;
+        int max = Integer.MIN_VALUE, sum = 0;
+        for (int i =0 ; i<n ; i++) {
+            sum += nums[i];
+            max = Math.max(sum, max);
+            if (sum < 0) {
+                sum = 0;
+            }
+        }
+        return max;
+    }
 }
