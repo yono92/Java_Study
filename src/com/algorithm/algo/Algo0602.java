@@ -1,7 +1,5 @@
 package com.algorithm.algo;
 
-import java.util.ArrayList;
-
 public class Algo0602 {
     public static void main(String[] args) {
         /*
@@ -18,7 +16,14 @@ public class Algo0602 {
         int[] nums ={1,2,3,4};
         int target = 5;
         System.out.println(solution.twoSum(nums, target));
+        int[][] matrix= { {1,1,1},{1,0,1},{1,1,1}};
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.println(matrix[i]);
+            for (int j = i + 1; j < matrix.length; j++) {
+                System.out.println(matrix[i][j]);
 
+            }
+        }
     }
 
 
