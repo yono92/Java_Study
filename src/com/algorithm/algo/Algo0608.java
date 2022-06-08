@@ -13,8 +13,10 @@ public class Algo0608 {
 //        System.out.println(solution3(arr1,arr2));
 //        System.out.println(Arrays.toString(solution5(2,5)));
 //        System.out.println(solution6("yoonsejong"));
-        System.out.println(solution7(new int[]{1, 2, 3, 4}));
+//        System.out.println(solution7(new int[]{1, 2, 3, 4}));
+
     }
+
     public static long solution(int a, int b) {
         long answer = 0;
 //        if (a == b) {
@@ -158,4 +160,19 @@ public class Algo0608 {
         return answer;
     }
 
+    /*
+    자연수 n을 뒤집어 각 자리 숫자를 원소로 가지는 배열 형태로 리턴해주세요. 예를들어 n이 12345이면 [5,4,3,2,1]을 리턴합니다.
+     */
+    public static int[] solution10(long n) {
+        int[] answer = new int[String.valueOf(n).length()];
+        int index = 0;
+        int tmp = 0;
+        while (n > 0) {
+            tmp = (int) (n % 10);
+            n = n / 10;
+            answer[index] = tmp;
+            index++;
+        }
+        return answer;
+    }
 }
