@@ -1,13 +1,13 @@
 package com.algorithm.algo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Algo0609 {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(solution2(3,12)));
+//        System.out.println(Arrays.toString(solution2(3,12)));
+        System.out.println(solution3("one32four"));
     }
 
 
@@ -56,5 +56,34 @@ public class Algo0609 {
             return b;
         }
         return gcd(b, a % b);
+    }
+
+    public static boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int reverse = 0;
+        int temp = x;
+        while (temp != 0) {
+            reverse = reverse * 10 + temp % 10;
+            temp /= 10;
+        }
+        return reverse == x;
+    }
+
+    public static int solution3(String s) {
+        int answer = 0;
+        s = s.replace("zero", "0");
+        s = s.replace("one", "1");
+        s = s.replace("two", "2");
+        s = s.replace("three", "3");
+        s = s.replace("four", "4");
+        s = s.replace("five", "5");
+        s = s.replace("six", "6");
+        s = s.replace("seven", "7");
+        s = s.replace("eight", "8");
+        s = s.replace("nine", "9");
+        answer = Integer.valueOf(s);
+        return answer;
     }
 }
