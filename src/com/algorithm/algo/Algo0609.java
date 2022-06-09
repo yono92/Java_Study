@@ -7,7 +7,7 @@ import java.util.List;
 public class Algo0609 {
     public static void main(String[] args) {
 //        System.out.println(Arrays.toString(solution2(3,12)));
-        System.out.println(solution3("one32four"));
+        System.out.println(solution4("...!@BaT#*..y.abcdefghijklm"));
     }
 
 
@@ -85,5 +85,24 @@ public class Algo0609 {
         s = s.replace("nine", "9");
         answer = Integer.valueOf(s);
         return answer;
+    }
+
+
+    //카카오 블라인드 채용 신규유저 아이디 추천
+    public static String solution4(String new_id) {
+        String answer = new_id;
+
+        answer = answer.toLowerCase() // 1
+                .replaceAll("[^a-z0-9-_.]", "") // 2
+                .replaceAll("[.]{2,}", ".") // 3
+                .replaceAll("^[.]|[.]$", ""); // 4
+        answer = answer.equals("") ? "a" : answer; // 5
+        answer = answer.length() > 15 ? answer.substring(0, 15).replaceAll("[.]$", "") : answer; // 6
+        while (answer.length() <= 2) {
+            answer += answer.substring(answer.length()-1); // 7
+        }
+
+        return answer;
+
     }
 }
