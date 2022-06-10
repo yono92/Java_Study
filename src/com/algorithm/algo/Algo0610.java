@@ -2,8 +2,11 @@ package com.algorithm.algo;
 
 public class Algo0610 {
     public static void main(String[] args) {
-        System.out.println(solution3(3, 20, 4));
-
+//        System.out.println(solution3(3, 20, 4));
+//        System.out.println(solution4(10));
+        int[] absolutes ={4,7,12};
+        boolean[] signs = {true, false, true};
+        System.out.println(solution6(absolutes, signs));
     }
 
     /*
@@ -68,5 +71,56 @@ public class Algo0610 {
             i++;
         }
         return answer - money < 0 ? 0 : answer - money ;
+    }
+
+    /*
+    자연수 n이 매개변수로 주어집니다.
+    n을 x로 나눈 나머지가 1이 되도록 하는 가장 작은 자연수 x를 return 하도록 solution 함수를 완성해주세요.
+    답이 항상 존재함은 증명될 수 있습니다.
+     */
+    public static int solution4(int n) {
+        int answer = 0;
+        int i = 1;
+        while (i < n) {
+            if (n % i == 1) {
+                answer = i;
+                System.out.println(i+"번실행됨");
+                break;
+            }
+            i++;
+        }
+        return answer;
+    }
+
+    public static int solution5(int[] a, int[] b) {
+        int answer = 0;
+        for (int i = 0; i < a.length; i++) {
+            answer += a[i] * b[i];
+        }
+        return answer;
+    }
+    /*
+    어떤 정수들이 있습니다.
+    이 정수들의 절댓값을 차례대로 담은 정수 배열 absolutes와
+    이 정수들의 부호를 차례대로 담은 불리언 배열 signs가 매개변수로 주어집니다.
+    실제 정수들의 합을 구하여 return 하도록 solution 함수를 완성해주세요.
+     */
+    public static int solution6(int[] absolutes, boolean[] signs) {
+        int sum = 0;
+        int i = 0;
+
+        while (i < absolutes.length) {
+            if (!signs[i]) {
+                absolutes[i] = absolutes[i] * -1;
+                System.out.println("음수로 바뀐지 확인:" + absolutes[i]);
+                sum += absolutes[i];
+                System.out.println(sum);
+            } else {
+                sum += absolutes[i];
+                System.out.println(sum);
+            }
+            i++;
+        }
+        return sum;
     }
 }
