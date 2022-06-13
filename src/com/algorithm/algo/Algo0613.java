@@ -12,9 +12,14 @@ public class Algo0613 {
 //        System.out.println(Arrays.toString(solution3(2, 5)));
 //        System.out.println(solution4(441));
 //        System.out.println(solution5(12));
-        int[] lost = {2, 4};
-        int[] reverse = {1, 3, 5};
-        System.out.println(solution6(5, lost, reverse));
+//        int[] lost = {2, 4};
+//        int[] reverse = {1, 3, 5};
+//        System.out.println(solution6(5, lost, reverse));
+//        String[] participant = {"marina", "josipa", "nikola", "vinko", "filipa"};
+//        String[] completion = {"josipa", "filipa", "marina", "nikola"};
+//        System.out.println(solution7(participant, completion));
+        System.out.println(solution9("ssibbal"));
+
     }
 
 
@@ -172,5 +177,71 @@ public class Algo0613 {
         }
         return max;
     }
+
+    /*
+    완주 못한 사람~~
+     */
+    public static String solution7(String[] participant, String[] completion) {
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        for (int i = 0; i < completion.length; i++) {
+            if (!participant[i].equals(completion[i])) {
+                return participant[i];
+            }
+        }
+        return participant[participant.length - 1];
+    }
+    /*
+    2016년 1월 1일은 금요일입니다.
+    2016년 a월 b일은 무슨 요일일까요? 두 수 a ,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수,
+    solution을 완성하세요. 요일의 이름은 일요일부터 토요일까지 각각 `SUN,MON,TUE,WED,THU,FRI,SAT`
+    입니다. 예를 들어 a=5, b=24라면 5월 24일은 화요일이므로 문자열 "TUE"를 반환하세요.
+     */
+    public static String solution8(int a, int b) {
+//        Calendar calendar = new Calendar.Builder().setCalendarType("iso8601").setDate(2016, a-1, b).build();
+//        return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, new Locale("ko-KR")).toUpperCase(Locale.ROOT);
+        String answer = "";
+        String[] day = { "FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU" };
+        int[] date = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        int allDate = 0;
+        for (int i = 0; i < a - 1; i++) {
+            allDate += date[i];
+        }
+
+        allDate += (b - 1);
+        answer = day[allDate % 7];
+
+        return answer;
+    }
+
+    /*
+    문자열 내 p와 y의 개수
+    문제 설명
+    대문자와 소문자가 섞여있는 문자열 s가 주어집니다.
+    s에 'p'의 개수와 'y'의 개수를 비교해 같으면 True, 다르면 False를 return 하는 solution를 완성하세요.
+    'p', 'y' 모두 하나도 없는 경우는 항상 True를 리턴합니다. 단, 개수를 비교할 때 대문자와 소문자는 구별하지 않습니다.
+    예를 들어 s가 "pPoooyY"면 true를 return하고 "Pyy"라면 false를 return합니다.
+     */
+    public static boolean solution9(String s) {
+        boolean answer = true;
+        int p = 0;
+        int y = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'p' || s.charAt(i) =='P') {
+                p++;
+            }
+            if (s.charAt(i) == 'y' || s.charAt(i) == 'Y') {
+                y++;
+            }
+
+            if (p == y) {
+               answer=  true;
+            } else {
+                answer= false;
+            }
+        }
+        return answer;
+    }
 }
+
 
