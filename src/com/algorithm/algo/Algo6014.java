@@ -17,7 +17,11 @@ public class Algo6014 {
 //        System.out.println(solution6(souel));
 //        System.out.println(solution7("-1234"));
 //        System.out.println(solution8(10));
-        System.out.println(solution9("Zbcdefg"));
+//        System.out.println(solution9("Zbcdefg"));
+//        int[] lottos = {1, 2, 3, 4, 5, 6};
+//        int[] win_nums = {2, 3, 4, 5, 6, 7};
+//        System.out.println(Arrays.toString(solution11(lottos,win_nums)));
+        int[] answer = {1, 2, 3, 4, 5};
     }
 
     /*
@@ -189,4 +193,76 @@ public class Algo6014 {
         int answer = 0;
         return answer;
     }
+    /*
+    로또의 최고 순위와 최저 순위
+     */
+    public static int[] solution11(int[] lottos, int[] win_nums) {
+        int[] answer = {0, 0};
+        int zeroCnt = 0;
+
+        Arrays.sort(lottos);
+        for(int i = 0; i < 6; i++) {
+            if(lottos[i] != 0) break;
+            zeroCnt++;
+        }
+
+        Arrays.sort(win_nums);
+        for(int j = 0; j < 6; j++) {
+            for(int k = zeroCnt; k < 6; k++) {
+                if(win_nums[j] != lottos[k])    continue;
+                answer[0]++;
+                answer[1]++;
+            }
+        }
+
+        answer[0] += zeroCnt;
+
+        for(int i = 0; i < 2; i++) {
+            if(answer[i] == 6) answer[i] = 1;
+            else if(answer[i] == 5) answer[i] = 2;
+            else if(answer[i] == 4) answer[i] = 3;
+            else if(answer[i] == 3) answer[i] = 4;
+            else if(answer[i] == 2) answer[i] = 5;
+            else answer[i] = 6;
+        }
+
+        return answer;
+    }
+
+    public int[] solution12(int[] answers) {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+
+        int[] first = {1,2,3,4,5};
+        int[] second = {2,1,2,3,2,4,2,5};
+        int[] third = {3,3,1,1,2,2,4,4,5,5};
+
+        int[] scores = {0,0,0}; // 수포자들 답 맞은 개수
+        // 비교
+        for(int i = 0; i < answers.length; i++){
+            if(first[i % 5] == answers[i]){ scores[0]++;}
+            if(second[i % 8] == answers[i]){ scores[1]++;}
+            if(third[i % 10] == answers[i]){ scores[2]++;}
+        }
+
+        int[] arr = new int[scores.length];
+        for(int i = 0; i < scores.length; i++){
+            arr[i] = scores[i];
+        }
+
+        Arrays.sort(arr);
+
+        for(int i = 0; i < arr.length; i++){
+            if(scores[i] == arr[2]){
+                list.add(i+1);
+            }
+        }
+
+        int[] answer = new int[list.size()];
+        for(int i = 0; i < list.size(); i++){
+            answer[i] = list.get(i);
+        }
+
+        return answer;
+    }
+
 }
