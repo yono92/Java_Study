@@ -12,7 +12,12 @@ public class Algo6014 {
 //        System.out.println(solution2("a234"));
 //        System.out.println(solution3(3));
 //        System.out.println(solution4("AB", 1));
-        System.out.println(solution5("try hello world"	));
+//        System.out.println(solution5("try hello world"	));
+//        String[] souel = {"jane", "Kim"};
+//        System.out.println(solution6(souel));
+//        System.out.println(solution7("-1234"));
+//        System.out.println(solution8(10));
+        System.out.println(solution9("Zbcdefg"));
     }
 
     /*
@@ -116,7 +121,72 @@ public class Algo6014 {
                 answer += String.valueOf(Character.toLowerCase(ch));
             }
         }
+        return answer;
+    }
 
+    public static String solution6(String[] seoul) {
+        String answer = "";
+//        for (int i = 0; i < seoul.length; i++) {
+//            if (seoul[i].equals("Kim")) {
+//                answer += "김서방은 "+i+"에 있다.";
+//            }
+//        }
+        answer += "김서방은 "+Arrays.asList(seoul).indexOf("Kim")+"에 있다";
+        return answer;
+    }
+
+    public static int solution7(String s) {
+        int answer = Integer.parseInt(s);
+        return answer;
+    }
+    /*
+    소수 찾기
+    문제 설명
+    1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요.
+    소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다.(1은 소수가 아닙니다.)
+     */
+    public static int solution8(int n) {
+        int answer = 0;
+        boolean[] prime = new boolean [n+1];
+        for(int i=2; i<=n ; i++)
+            prime[i]=true; //2~n번째수를 true로 초기화
+        //제곱근 구하기
+        int root=(int)Math.sqrt(n);
+        for(int i=2; i<=root; i++){ //2~루트n까지 검사
+            if(prime[i]==true){ //i번째의 수가 소수일 때
+                for(int j=i; i*j<=n; j++) //그 배수들을 다 false로 초기화(배수는 소수가 아니기 때문)
+                    prime[i*j]=false;
+            }
+        }
+        for(int i =2; i<=n; i++) {
+            if(prime[i]==true)
+                answer++;
+        }
+        return answer;
+    }
+
+    /*
+    문제 설명
+    문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요.
+    s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
+     */
+    public static String solution9(String s) {
+        char[] chararr = s.toCharArray();
+        Arrays.sort(chararr);
+        StringBuilder sb = new StringBuilder(new String(chararr, 0, chararr.length));
+        return sb.reverse().toString();
+    }
+
+    /*
+    S사에서는 각 부서에 필요한 물품을 지원해 주기 위해 부서별로 물품을 구매하는데 필요한 금액을 조사했습니다.
+    그러나, 전체 예산이 정해져 있기 때문에 모든 부서의 물품을 구매해 줄 수는 없습니다. 그래서 최대한 많은 부서의 물품을 구매해 줄 수 있도록 하려고 합니다.
+    물품을 구매해 줄 때는 각 부서가 신청한 금액만큼을 모두 지원해 줘야 합니다.
+    예를 들어 1,000원을 신청한 부서에는 정확히 1,000원을 지원해야 하며, 1,000원보다 적은 금액을 지원해 줄 수는 없습니다.
+    부서별로 신청한 금액이 들어있는 배열 d와 예산 budget이 매개변수로 주어질 때,
+    최대 몇 개의 부서에 물품을 지원할 수 있는지 return 하도록 solution 함수를 완성해주세요.
+     */
+    public int solution10(int[] d, int budget) {
+        int answer = 0;
         return answer;
     }
 }
