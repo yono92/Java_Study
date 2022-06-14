@@ -2,6 +2,7 @@ package com.algorithm.algo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Algo6014 {
@@ -21,7 +22,8 @@ public class Algo6014 {
 //        int[] lottos = {1, 2, 3, 4, 5, 6};
 //        int[] win_nums = {2, 3, 4, 5, 6, 7};
 //        System.out.println(Arrays.toString(solution11(lottos,win_nums)));
-        int[] answer = {1, 2, 3, 4, 5};
+        String[] strings = {"sun", "bed", "san"};
+        System.out.println(Arrays.toString(solution13(strings, 2)));
     }
 
     /*
@@ -265,4 +267,24 @@ public class Algo6014 {
         return answer;
     }
 
+
+    /*
+    문자열로 구성된 리스트 strings와,
+    정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다.
+    예를 들어 strings가 ["sun", "bed", "car"]이고 n이 1이면 각 단어의 인덱스 1의 문자 "u", "e", "a"로 strings를 정렬합니다.
+     */
+    public static String[] solution13(String[] strings, int n) {
+        String[] answer = {};
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < strings.length; i++) {
+            list.add(strings[i].charAt(n) + strings[i]);
+        }
+        Collections.sort(list);
+
+        answer = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i).substring(1, list.get(i).length());
+        }
+        return answer;
+    }
 }
